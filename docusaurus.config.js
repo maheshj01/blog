@@ -1,6 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const { matchPath } = require("react-router-dom");
+
 const lightCodeTheme = require("prism-react-renderer").themes.github;
 const darkCodeTheme = require("prism-react-renderer").themes.dracula;
 
@@ -13,12 +15,20 @@ const config = {
   customFields: {
     allPosts: [
       {
+        slug: "react-keyboard-shortucts",
+        title: "Add Keyboard Shortcuts to your React App like a Pro",
+        authors: "Mahesh",
+        featured: true,
+        created_at: "2024-10-07T00:00:00Z",
+        tags: ["programming", "blog", "development", "react"]
+      },
+      {
         slug: "exploring-project-idx",
         title: "Your DEV environment in your browser with Project IDX",
         authors: "Mahesh",
         featured: false,
         created_at: "2024-01-09",
-        tags: ["programming", "deve", "medium"]
+        tags: ["programming", "dev"]
       },
       {
         slug: "google-hiring-challenge-2",
@@ -34,7 +44,7 @@ const config = {
         authors: "Mahesh",
         featured: true,
         created_at: "2023-10-13",
-        tags: ["programming", "hiring", "medium"]
+        tags: ["programming", "hiring"]
       },
       {
         slug: "the-genetic-algorithm",
@@ -50,7 +60,7 @@ const config = {
         authors: "Mahesh",
         featured: true,
         created_at: "2023-08-15",
-        tags: ["flutter", "software", "medium"]
+        tags: ["flutter", "software"]
       },
       {
         slug: "deploying-flutter-app-to-netlify",
@@ -58,7 +68,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2023-07-03",
-        tags: ["flutter", "web", "medium", "CICD"]
+        tags: ["flutter", "web", "CICD"]
       },
       {
         slug: "vscode-for-flutter-hacks",
@@ -66,7 +76,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2023-01-08",
-        tags: ["flutter", "software", "medium", "hack"]
+        tags: ["flutter", "software", "hack"]
       },
       {
         slug: "everything-about-the-bottomnavigationbar",
@@ -74,7 +84,7 @@ const config = {
         authors: "Mahesh",
         featured: true,
         created_at: "2022-05-30",
-        tags: ["flutter", "software", "medium", "hack"]
+        tags: ["flutter", "software", "hack"]
       },
       {
         slug: "leveraging-clippath-in-flutter",
@@ -82,7 +92,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2021-12-18",
-        tags: ["flutter", "software", "medium"]
+        tags: ["flutter", "software"]
       },
       {
         slug: "managing-secrets-in-open-sourced-flutter-web",
@@ -90,7 +100,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2021-03-13",
-        tags: ["flutter", "technology", "Localization", "medium"]
+        tags: ["flutter", "technology", "Localization"]
       },
       {
         slug: "flutter-localization-on-the-fly",
@@ -98,7 +108,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2021-03-13",
-        tags: ["flutter", "technology", "Localization", "medium"]
+        tags: ["flutter", "technology", "Localization"]
       },
       {
         slug: "search-as-you-type-in-flutter",
@@ -106,7 +116,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2020-02-10",
-        tags: ["flutter", "technology", "software", "medium"]
+        tags: ["flutter", "technology", "software"]
       },
       {
         slug: "flutter-automated-testing",
@@ -114,7 +124,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2019-08-07",
-        tags: ["flutter", "technology", "testing", "medium"]
+        tags: ["flutter", "technology", "testing"]
       },
       {
         slug: "deploying-flutter-app-to-github-pages",
@@ -122,7 +132,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2019-05-12",
-        tags: ["flutter", "technology", "web", "medium"]
+        tags: ["flutter", "technology", "web"]
       },
       {
         slug: "building-first-flutter-web-page",
@@ -130,7 +140,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2019-05-09",
-        tags: ["flutter", "technology", "web", "medium"]
+        tags: ["flutter", "technology", "web"]
       },
       {
         slug: "cupertino-picker-in-flutter",
@@ -138,7 +148,7 @@ const config = {
         authors: "Mahesh",
         created_at: "2018-12-22",
         featured: false,
-        tags: ["technology", "software", "medium", "flutter"]
+        tags: ["technology", "software", "flutter"]
       },
       {
         slug: "sync-files-between-windows-and-drive",
@@ -220,7 +230,7 @@ const config = {
   baseUrl: "/",
   // GitHub pages deployment config.
   // If you aren"t using GitHub pages, you don"t need these.
-  organizationName: "maheshmnj", // Usually your GitHub org/user name.
+  organizationName: "maheshj01", // Usually your GitHub org/user name.
   projectName: "blog", // Usually your repo name.
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -252,7 +262,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
-            "https://github.com/maheshmnj/blog/tree/main/"
+            "https://github.com/maheshj01/blog/tree/main/"
         },
         blog: {
           blogSidebarCount: 0,
@@ -260,31 +270,53 @@ const config = {
           include: ["**/*.{md,mdx}"],
           postsPerPage: 'ALL',
           editUrl:
-            "https://github.com/maheshmnj/blog/tree/main/",
+            "https://github.com/maheshj01/blog/tree/main/",
           feedOptions: {
             type: "json",
+            // createFeedItems: async (blogItems, blogPluginData) => {
+            //   return blogItems.map((blogItem) => {
+            //     const url = `https://blog.maheshjamdade.com/blog/${blogItem.metadata.permalink}`;
+            //     return {
+            //       id: url,
+            //       title: blogItem.metadata.title,
+            //       link: url,
+            //       description: blogItem.metadata.description,
+            //       content: blogItem.content,
+            //     }
+            //   });
+
+            // },
           },
+          // blogPostComponent: '@site/src/components/Posts/BlogList.js'
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+        // path: "./blog",
+      })
     ],
   ],
   themeConfig:
   {
+    // announcementBar: {
+    //   id: 'support_us',
+    //   content:
+    //     'We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
+    //   backgroundColor: '#fafbfc',
+    //   textColor: '#091E42',
+    //   isCloseable: true,
+    // },
     // Replace with your project"s social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
       title: "Mahesh\'s Blog",
       logo: {
-        // alt: "My Site Logo",
         src: "https://maheshjamdade.com/img/profile_pic.jpg",
         href: "/",
       },
       items: [
         {
-          href: "https://github.com/maheshmnj/blog",
+          href: "https://github.com/maheshj01/blog",
           label: "GitHub",
           position: "right",
         },
@@ -297,16 +329,20 @@ const config = {
           title: "Social",
           items: [
             {
+              label: "Website",
+              href: "https://maheshjamdade.com/",
+            },
+            {
               label: "Medium",
-              href: "https://maheshmnj.medium.com/",
+              href: "https://maheshjamdade.medium.com/",
             },
             {
               label: "Twitter",
-              href: "https://twitter.com/maheshmnj",
+              href: "https://twitter.com/maheshj01",
             },
             {
               label: "Threads",
-              href: "https://threads.net/@maheshmnj",
+              href: "https://threads.net/@maheshj01",
             },
           ],
         },
@@ -319,7 +355,7 @@ const config = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/maheshmnj",
+              href: "https://github.com/maheshj01",
             },
           ],
         },
@@ -328,6 +364,7 @@ const config = {
     },
     colorMode: {
       defaultMode: "dark",
+      disableSwitch: false,
     },
     lightTheme: {
       primaryColor: "#007BFF", // Light theme primary color

@@ -20,7 +20,7 @@ Developing apps can feel overwhelming and take up a lot of time. On top of that,
 
 Whether you’re using Flutter or any other web framework, this post will provide you with simple steps to effortlessly deploy your app without any hassle.
 
-We will be using [Netlify actions](https://github.com/marketplace/actions/netlify-actions) which will run the Github workflow for every commit and deploy our web app. We will be deploying this [flutter-palm](https://github.com/maheshmnj/flutter-palm) project which is basically a chat app powered by the [Google Palm Api](https://developers.generativeai.google/products/palm).
+We will be using [Netlify actions](https://github.com/marketplace/actions/netlify-actions) which will run the Github workflow for every commit and deploy our web app. We will be deploying this [flutter-palm](https://github.com/maheshj01/flutter-palm) project which is basically a chat app powered by the [Google Palm Api](https://developers.generativeai.google/products/palm).
 
 The app is available for use here https://palmchat.netlify.app
 
@@ -58,7 +58,7 @@ Now it's time to set up the Github workflow.
 
 1. In the root of your project create a **workflows** directory under **.github**, for me the directory path will be `palmchat/.github/workflows`
 2. Create a file named **workflow.yml** (name it whatever you like)
-3. Paste the below [workflow script](https://github.com/maheshmnj/flutter-palm/blob/main/.github/workflows/workflow-merge.yml), most part of it is self-explanatory, But I will still try to explain whats cooking
+3. Paste the below [workflow script](https://github.com/maheshj01/flutter-palm/blob/main/.github/workflows/workflow-merge.yml), most part of it is self-explanatory, But I will still try to explain whats cooking
 
 ```yaml
 name: Deploy to netlify on merge

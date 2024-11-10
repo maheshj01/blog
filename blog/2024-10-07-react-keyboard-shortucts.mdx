@@ -19,3 +19,138 @@ ust as each piano key corresponds to a unique sound, the keys on a keyboard can 
 In the world of great product experiences, if you are not adding a keyboard shortcut at appropriate places you are hurting the user experience. Wonder how?
 
 Take Google Search as an example. It has a ‘Google Search’ button, but I bet 90% of people will press ‘Enter’ instead of clicking the button. Why? Because it’s a product standard — it’s ingrained in our subconscious to hit ‘Enter’ to submit input.
+
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*u9q4PfTQ0bkg5LsOegDMyQ.png)
+
+Similarly, when aiming to build a great user experience, it’s important to follow established standards and implement relevant keyboard shortcuts wherever necessary. For this note-taking app, I developed a custom editor that supports GitHub Flavored Markdown, allowing users to create rich text using keyboard shortcuts. A rich text editor relies on a variety of shortcuts to make writing a smooth and enjoyable experience.
+
+In this blog post I give a high level implementation of how to:
+
+Capture keyboard shortcuts on any React component.
+Implement shortcuts in a text input for custom formatting.
+Before we dive in, check out Demo 1 of the Pastelog app, which showcases keyboard shortcuts in action throughout the application.
+
+![](https://miro.medium.com/v2/resize:fit:2000/format:webp/1*cIfzEStdDe1Ek9s60Am7ow.gif)
+<Caption caption="Demo of Keyboard shortcuts in Action on the Pastelog app" />
+
+If you look closely the demo shows 4 shortcuts
+
+- Cmd + S: Hide/Unhide the Sidebar
+- Cmd + P: Toggle between editor and preview
+- Cmd + N: Switch to new Editor
+- Cmd + D: Switch to Dark mode
+
+Now, lets take a look at how we can add this feature in our existing app. Pastelog is built using NextJS but the approach and code we will discuss should work just fine in a React/Vite app.
+
+This is the simple **Logslayout** Component of the app with a sidebar and the main content placed in a row.
+
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b01wpEowm75QgBpSa5MMzQ.png)
+
+> Few tailwind CSS classes and some unnecessary methods have been redacted to make the code readable.
+
+
+To listen for keyboard events, web browsers provide an API that JavaScript can use to handle the keydown and keyup events.
+From the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event), the keydown event is triggered for all keys, regardless of whether they produce a character. Both keydown and keyup events includes several properties such as code (ascii) and key (character) that indicates which key is pressed.
+
+To leverage this API we create a ShortcutWrapper component that can be wrapped around Other Components to listen to keyboard events generated from those components. It also exposes a onShortCutClick callback to capture the keypress event.
+
+
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9dtsMk-uwKG1_oqcimfSow.png)
+
+Here are two important things to know from this component
+
+1. pressing ‘A’ or ‘a’ (whether uppercase or lowercase) will still work becauseevent.key property is providing the key's value as a string and its value will be ‘a’.
+
+2. When capturing keyboard events, We shoud add event.preventDefault only if we want to override the default system behavior, For instance pressing ctrl/cmd + p will trigger printing of the web page, But This shortcut won’t work in our app since we are overriding that behavior using `event.preventDefault`
+
+Now we Wrap the ShortcutsWrapper component around the LogsLayout inorder to capture any key stroke and handle it in **handleShortCut**
+
+Now, Lets take a look at adding shortcuts to our editor to perfom some custom editing, The Pastelog Editor Supports [Github flavoured markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) syntax. Since its an editor built to write long Rich notes, It is not uncommon to expect keyboard shortcuts built into the editor. Heres a look at short demo showcasing few among the many shortcuts supported by the Pastelog editor.
+
+![](https://miro.medium.com/v2/resize:fit:2000/format:webp/1*-Au_S9PuZujekkZQAcr6YA.gif)
+
+A texteditor at its core is a **textArea**, All beautiful editors out there were built after customizing this basic input. Our text editor has a markdown Support embedded any text format written in the editor will be fed to the Markdown Preview and the editor toggles between preview and the textinput using the preview property
+
+![](https://miro.medium.com/v2/resize:fit:2000/format:webp/1*Nndte2bJDLpcszLZqoRljg.png)
+
+The core functionality of this editor lies in the **TextCompletionInput** component. It includes various formatting options and keyboard shortcuts. However, here's a simplified version of the code for the purposes of this blog post. If you would like to go nuts, Heres the [complete code](https://github.com/maheshj01/pastelog/blob/main/src/app/(main)/_components/completion.tsx)😅
+
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ol7twXM81N2D2VdWO8eWgg.png)
+
+
+Unlike ShortCutWrapper we don’t need to have a keydown listener, textinput provides a **onKeyDown** property to listen to key events and do all the magic.
+
+On a Text selection we plan to apply following formattings in the text editor
+
+```
+    text              Shortcut               Markdown Syntax
+
+- Bold Text            Ctrl + b              **selected text**
+- Italic               Ctrl + i.             *<selected text>*
+- Embed text in a Link Ctrl + k              [](selected text)
+```
+
+So we take a particular piece of text trigger a shortcut and convert it to Markdown Syntax
+- e.g Pressing Ctrl + b should bold the text by adding ** around the selected text.
+
+for a complete list of markdown syntax supported by Pastelog refer the [keyboard shortcuts guide.](https://pastelog.vercel.app/logs/publish/shortcuts)
+
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*I3jEN8SlDQMj--KLpAocKw.png)
+
+And, This is just a helper function to append the special characters around the selected text denoted by start index and end index and returns the markdown text with the position of the cursor at the end of the text.
+
+```js
+public applyFormatting(start: number, end: number, syntax: string): { value: string, newCursorPos: number } {
+    let selectedText = this.value.substring(start, end);
+
+    const trimmedText = selectedText.trim();
+
+    if (trimmedText === '') {
+        return { value: this.value, newCursorPos: end };
+    }
+
+    const trimStart = selectedText.indexOf(trimmedText);
+    const trimEnd = trimStart + trimmedText.length;
+
+    const formattedText =
+        selectedText.substring(0, trimStart) +
+        `${syntax}${trimmedText}${syntax}` +
+        selectedText.substring(trimEnd);
+
+    const newValue =
+        this.value.substring(0, start) +
+        formattedText +
+        this.value.substring(end);
+
+    const newCursorPos = start + formattedText.length;
+
+    return { value: newValue, newCursorPos };
+}
+```
+For embedding a link We will need another helper function and so on,
+
+```js
+const applyLinkFormatting = () => {
+    const textarea = inputRef.current;
+    if (!textarea) return;
+
+    const { value, newCursorPos } = markdownFormatter.current.applyLinkFormatting(
+        textarea.selectionStart,
+        textarea.selectionEnd
+    );
+    updateValue(value, newCursorPos);
+};
+```
+
+Overall, it’s all about capturing keystrokes and implementing custom logic to handle the formatting. I highly recommend taking a look at the complete code, If you plan to implement something similar. As of this writing, the editor includes the following features:
+
+- Keyboard shortcuts for different markdown syntax
+- Tab/Shift+Tab functionality to add or remove tabs across selected lines (including multiple lines).
+- Custom undo/redo functionality that tracks the editor’s state with each character change.
+- When in a List ordered/unordered Pressing enter Continues the list
+
+Moving forward, I plan to add more shortcuts, As you’d expect from any standard text editor, Heres a list of [shortcuts to add](https://github.com/maheshj01/pastelog/issues/35) on the roadmap.
+
+And that is all from this blog post, Hope this gave a indication of how these shortcuts are added in a web app.
+
+Until next time 👋🏻 Keep building great User experiences🚀

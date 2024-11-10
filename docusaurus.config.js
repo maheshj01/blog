@@ -15,7 +15,7 @@ const config = {
   customFields: {
     allPosts: [
       {
-        slug: "react-keyboard-shortucts",
+        slug: "react-keyboard-shortcuts",
         title: "Add Keyboard Shortcuts to your React App like a Pro",
         authors: "Mahesh",
         featured: true,

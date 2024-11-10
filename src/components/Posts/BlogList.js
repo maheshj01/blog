@@ -15,7 +15,8 @@ export const BlogList = (props) => {
     })
     const fetchPosts = async (tag) => {
         const feeds = await fetch('https://blog.maheshjamdade.com/blog/feed.json');
-        var localPosts = siteConfig.customFields.allPosts;
+        
+        // var localPosts = siteConfig.customFields.allPosts;
         feeds.json().then(data => {
             if (tag === 'All') {
                 setPosts(data.items);

@@ -8,6 +8,7 @@ tags: [life, travel, blog]
 
 import ImageAndContent from "../src/components/common/ImageAndContent.js";
 import Images from "../src/components/common/Images.js";
+import { images } from "./assets";
 
 Yesterday was all about visiting a place away from the Hometown,No it wasn't a holiday nor we were on a Vacation but we wanted to spend some time to relax and have some fun and relieve our stress ,
 I haven't been doing much good in my academics,its not that I didn't try but things didn't worked out for me,I went into a passive state,I was about to give up,I felt like I am done may be I can't take it anymore,I spent hours working but wasn't as productive as expected, I was never so depressed as I was until yesterday but then I gave it a thought
@@ -21,13 +22,13 @@ I and my friends planned a short trip to a nearby place 100 kms away from the Ho
 <Images
   length={3}
   largeIndex={2}
-  image1="https://steemitimages.com/1280x0/https://steemitimages.com/DQmbhvCoiG42Wy8aHfZZZnuAsmRoJt7vKutEw4QBSRzwj9d/IMG_20180315_093517_AO_HDR.jpg"
-  image2="https://steemitimages.com/DQmRHBdNV33K3CwhYjKyoMv7BA4AQud3aDMMBzVrAoDyMDB/IMG_20180315_092715_AO_HDR.jpg"
-  image3="https://steemitimages.com/1280x0/https://steemitimages.com/DQmR755TeDHepny3GMKsLVdL29U6SWwCAGuoeCkfMFNWsGL/IMG_20180315_092300_AO_HDR.jpg"
+  image1={images.road}
+  image2={images.car_in}
+  image3={images.car_out}
 />
 
 <ImageAndContent
-  image="https://steemitimages.com/DQmX1hftFezqQ7YDtsdGHas1o4fHYVrhTu426DubCR2Y8Hf/capture.jpg"
+  image={images.food}
   content={`And after travelling for couple of km's we stopped by and took the
             Breakfast at a Restaurant that serves all vegetarians,we started by taking
             a light breakfast and it was a "Dahi Dhapate" served with a "chatni" thats
@@ -46,9 +47,9 @@ my mind,its a good place to come by to relax and experience the serenity.
 <Images
   length={3}
   largeIndex={2}
-  image1="https://steemitimages.com/DQmcLkLpEGwPVVkYQmpv7dgqWEkEwxUHy6wnHHFWgjDx9Pb/IMG_20180315_104738_AO_HDR.jpg"
-  image2="https://steemitimages.com/1280x0/https://steemitimages.com/DQmckJw7T6MM9vSucsSUmhpNWxgmvSAJmCn5VRwJ8unVwuw/IMG_20180315_104734_AO_HDR.jpg"
-  image3="https://steemitimages.com/DQmW8xC7JgrMYWhzRjTrtDo71cPmYKmQkTUZPnVniHMKX61/IMG_20180315_104934_AO_HDR.jpg"
+  image1={images.park4}
+  image2={images.park1}
+  image3={images.park2}
 />
 
 we were few minutes early at the water park ,so we just took a walk to watch the scenery around and as we move ahead we see a blue Mermaid hopefully it was built for the scenery years ago and it's still quite well maintained at the entrance .
@@ -56,28 +57,24 @@ we were few minutes early at the water park ,so we just took a walk to watch the
 <Images
   length={3}
   largeIndex={0}
-  image1="https://steemitimages.com/1280x0/https://steemitimages.com/DQmXd9r8YT9V9HZfzgDq6PoEvd46RkUKNUBTqUiXyhpS9Nk/IMG_20180315_105305_AO_HDR.jpg"
-  image2="https://steemitimages.com/1280x0/https://steemitimages.com/DQmVXMv4dA6D5WcuhVhabvWuoZz3xuZ7vfD217Z2rLTRJhW/IMG_20180315_110428_AO_HDR.jpg"
-  image3="https://steemitimages.com/DQmTP9NThw5SBd9SJ7z2LEUBk14RmaBaAtKzegpozYpdd5n/IMG_20180315_110401.jpg"
+  image1={images.park3}
+  image2={images.group2}
+  image3={images.group1}
 />
 
 Finally we got to get in, The water park was opened and we were excited to rush in,We took the tickets and got the Costumes boys were happy because we got the Costume for free lol :)
 
-<Images
-  length={1}
-  largeIndex={0}
-  image1="https://steemitimages.com/DQmeqTsaPWj3PpLaf6qUKn9gdS2237wxZEWYh9ApERw3eaR/IMG_20180315_112139_AO_HDR.jpg"
-/>
+<Images length={1} largeIndex={0} image1={images.costumes} />
 
 The water park is as Green from the inside as it is from the Outside.
 
 <Images
   length={4}
   largeIndex={-10}
-  image1="https://steemitimages.com/1280x0/https://steemitimages.com/DQmQjXc9qJ8aFfVtTemivSqYJLTuWQavqtvA7a1cDgWZETo/IMG_20180315_112012_AO_HDR.jpg"
-  image2="https://steemitimages.com/DQmP6xMB7ZLhzuKThk27RfxJ3M7CyKLAQ3RpCeo1C2MJcuF/IMG_20180315_141956.jpg"
-  image3="https://steemitimages.com/1280x0/https://steemitimages.com/DQmSLNdzmceTLL6arDiZX3JF6TprR214NPnw7tTwgxmtmc3/IMG_20180315_142002.jpg"
-  image4="https://steemitimages.com/DQmRbKDS6UzzRpjsp9jXgKA9wjnc7QZ3ATAfUNBcWYvXPQz/IMG_20180315_112007_AO_HDR.jpg"
+  image1={images.pool1}
+  image2={images.pool2}
+  image3={images.pool3}
+  image4={images.pool4}
 />
 
 we enjoyed lots of different rides that left us restless and here are a couple off shots of the same.
@@ -85,13 +82,13 @@ we enjoyed lots of different rides that left us restless and here are a couple o
 <Images
   length={7}
   largeIndex={2}
-  image1="https://steemitimages.com/1280x0/https://steemitimages.com/DQmVkbdoEqobkK2CeyL1gZQLT6azT5vyUfqBm81PpVEx21q/IMG_20180315_122620_BURST1.jpg"
-  image2="https://steemitimages.com/DQmfLK3eFeQjoXAah8Tpz8UxqeJhASumqFLPTyeBoFyGpja/IMG_20180315_122620_BURST7.jpg"
-  image3="https://steemitimages.com/1280x0/https://steemitimages.com/DQmVtSyFXjabYZj4fHniRgtVn3xW1a53KnwH6QMkrdUeupb/IMG_20180315_125454.jpg"
-  image4="https://steemitimages.com/1280x0/https://steemitimages.com/DQmQoPkVtd7ytzqD6Rqp6xPVR3BzukcaHb5FFnuqjJpAfEh/IMG_20180315_131919.jpg"
-  image5="https://steemitimages.com/DQmNtT3AXMXpxBYytg6Ck6VndWogc54a2ni7u46MhK2qdhD/IMG_20180315_130413.jpg"
-  image6="https://steemitimages.com/DQmSNd5wp2h5DGjHQnBbuZxWkgECPwZajr962XXsEoSH9vv/IMG_20180315_132655_1.jpg"
-  image7="https://steemitimages.com/1280x0/https://steemitimages.com/DQma2yw1bANgEKHacm1Xf9cc3XvbjMhfPq9teoCe1B3CZDX/IMG_20180315_141959.jpg"
+  image1={images.pool5}
+  image2={images.pool6}
+  image3={images.pool7}
+  image4={images.pool11}
+  image5={images.pool8}
+  image6={images.pool9}
+  image7={images.pool10}
 />
 
 And after Couple of hours in the water park we took a shower and left out and we took the lunch and our next stop was the Amusement park near by,As I said earlier Chakur isn't just about water park there's an Amusement Park too,and We headed towards the Amusement park.
@@ -99,9 +96,9 @@ And after Couple of hours in the water park we took a shower and left out and we
 <Images
   length={3}
   largeIndex={2}
-  image1="https://steemitimages.com/DQmNo1YwiiuKdhTSGo9AN7YidmN6qoEFF122HNJX9uQgUDx/IMG_20180315_145720.jpg"
-  image2="https://steemitimages.com/1280x0/https://steemitimages.com/DQmdWPHXKf9HsjsmNJcPgoL2wd6CkMZyPrEouRaMD5KCYN5/IMG_20180315_145747.jpg"
-  image3="https://steemitimages.com/DQmQ5kbEnpJibjesPeeGvRE6akff5X7a8qV5hNdCaAAMKmu/IMG_20180315_150050_AO_HDR.jpg"
+  image1={images.selfie}
+  image2={images.selfie2}
+  image3={images.group_back}
 />
 
 At the Entrance of the Amusement park we took the Mini Train,After spending hours in the water park we were too much Exhausted but the train was quite relieving.
@@ -109,31 +106,27 @@ At the Entrance of the Amusement park we took the Mini Train,After spending hour
 <Images
   length={5}
   largeIndex={-10}
-  image1="https://steemitimages.com/1280x0/https://steemitimages.com/DQmYDaxo1AKXViZ1ifa7W1ezhqTuDevfVJN6ntJqSt7T8uc/IMG_20180315_154413_AO_HDR.jpg"
-  image2="https://steemitimages.com/DQmYFei2n1ZkwYqgCcx9X3Tuw2fv8FGq9DzBUphfY8Qh4i2/IMG_20180315_154425_AO_HDR.jpg"
-  image3="https://steemitimages.com/1280x0/https://steemitimages.com/DQmd9qbarq7TtiJdBrJAUprfqgYknsEKGBnKg6VJFXgCUPj/IMG_20180315_154440_AO_HDR.jpg"
-  image4="https://steemitimages.com/DQmXdRvNx5JnfAxt6Pk67LSgcZDAX2jjze6Y66qku4ZJMAj/IMG_20180315_154849.jpg"
-  image5="https://steemitimages.com/1280x0/https://steemitimages.com/DQmYcUKwEA7kB3Fp3C1JTLvhNwf651FP9PCeCKnaZv495uj/IMG_20180315_155013_AO_HDR.jpg"
+  image1={images.amusement1}
+  image2={images.amusement2}
+  image3={images.amusement3}
+  image4={images.amusement4}
+  image5={images.amusement5}
 />
 
 After we left the train we reached at the Dash Car and Dashed each other like hell lol : )
 which hardly lasted for 2-3 minutes.
 
-<Images
-  length={1}
-  largeIndex={0}
-  image1="https://steemitimages.com/DQmb8FHScCQjA5ZPm8pY5RMVnArCW3peDovCx5uzgRAuUU2/IMG_20180315_155739_AO_HDR.jpg"
-/>
+<Images length={1} largeIndex={0} image1={images.amusement6} />
 
 We took to Boating which was a very good Experience it was a pedal boat and we did it with great efforts,we were 8 boys so we took 2 pedal boats, the atmosphere was very cool and calm with light breeze passing by.
 
 <Images
   length={4}
   largeIndex={-10}
-  image1="https://steemitimages.com/1280x0/https://steemitimages.com/DQmYJkLcEbGhTZtKNjnJQJjWChhYc88NYKyCg3gDpWsYESH/IMG_20180315_160557_AO_HDR.jpg"
-  image2="https://steemitimages.com/DQmRHptaRfFavJWKe8LnEvna4b7KqMHQzxHjTKhL8YdTWa6/IMG_20180315_161122.jpg"
-  image3="https://steemitimages.com/DQmTTq1comiH2ib2qfpKu7tgVM7xk8Fo6T4CMtzfLnjMHRG/IMG_20180315_161757.jpg"
-  image4="https://steemitimages.com/1280x0/https://steemitimages.com/DQmUFB9H3RTDdkVJTgwsb4ZA6LWjtvF5aqufLMtznzHiFXb/IMG_20180315_161747_AO_HDR.jpg"
+  image1={images.ferry1}
+  image2={images.ferry2}
+  image3={images.ferry3}
+  image4={images.ferry4}
 />
 
 We also took the motor Boat
@@ -141,9 +134,9 @@ We also took the motor Boat
 <Images
   length={3}
   largeIndex={0}
-  image1="https://steemitimages.com/1280x0/https://steemitimages.com/DQmcc77nkTZtrk4KxufKoSFL36umyvfj9G1Xta64w4QQ8rG/IMG_20180315_162557_AO_HDR.jpg"
-  image2="https://steemitimages.com/DQmSQRtp3rGhP5XGUxwPj5KfmYAqHKH5r2yzUTYVT13JaV6/IMG_20180315_162857.jpg"
-  image3="https://steemitimages.com/1280x0/https://steemitimages.com/DQmcBB1GpyQ5G1VRZdnhV6hotXVMMMThSjDhwk8n9u6AHos/IMG_20180315_162830.jpg"
+  image1={images.ferry5}
+  image2={images.ferry6}
+  image3={images.ferry7}
 />
 
 And after a little ride we were finally at the children park the last amusement of the journey.
@@ -151,8 +144,8 @@ And after a little ride we were finally at the children park the last amusement 
 <Images
   length={2}
   largeIndex={-10}
-  image1="https://steemitimages.com/1280x0/https://steemitimages.com/DQmZN9ZwhAMygTBYeiRtZPJYzJ9zv6DpNMZc5KwRdTCVbKt/IMG_20180315_163724_AO_HDR.jpg"
-  image2="https://steemitimages.com/DQmNk3e2NEsrsUjhuUyUtwd7NhhufRbeGbPHnghyyXMzggK/IMG_20180315_163728_AO_HDR.jpg"
+  image1={images.park5}
+  image2={images.park6}
 />
 
 we rode on the Revolving tower and also took the camel ride ,there was a little girl probably 2-3 years old was quite brave to join us on the revolving tower which must be atleast 20 fts high.
@@ -160,9 +153,9 @@ we rode on the Revolving tower and also took the camel ride ,there was a little 
 <Images
   length={3}
   largeIndex={2}
-  image1="https://steemitimages.com/DQmXJ5CtAuTx7axY38uain4Y8tNWp7utihpTj4bBjjcvfz4/IMG_20180315_163849_AO_HDR.jpg"
-  image2="https://steemitimages.com/1280x0/https://steemitimages.com/DQmdF8A2McjfTE4HBoqXysP4SEg5dnsCuduApr7o7Gfhm4u/IMG_20180315_163836_AO_HDR.jpg"
-  image3="https://steemitimages.com/DQmZc1PX64cf6PFD4py7dY2GSktYeoXzhoRaTLKcksaLWkD/IMG_20180315_164214_AO_HDR.jpg"
+  image1={images.park7}
+  image2={images.park8}
+  image3={images.park9}
 />
 
 With the camel Ride ended our Journey,but for me the Journey has actually began I see this as a New Beginning, this reminds me an Inspiring words from Joel Osteen.

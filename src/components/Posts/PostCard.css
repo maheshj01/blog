@@ -1,33 +1,33 @@
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .title {
-    font-size: 1.05rem;
-    font-weight: 600;
-    line-height: 1.1;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.1;
 }
 
 .postcard {
-    cursor: pointer;
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: left;
-    vertical-align: middle;
-    padding: 20px 20px 0px 20px;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  vertical-align: middle;
+  padding: 20px 20px 0px 20px;
 }
 
 .postcard:hover {
-    background-color: var(--ifm-color-primary-lightest);
-    border-radius: 10px;
-    color: aliceblue;
-    transition: background-color 0.5s ease;
+  background-color: var(--ifm-color-primary);
+  border-radius: 10px;
+  color: white;
+  transition-duration: 0.2s;
 }
 
 .postdate {
-    min-width: 80px;
-    font-size: 0.9rem;
-    font-weight: 500;
+  min-width: 80px;
+  font-size: 0.9rem;
+  font-weight: 500;
 }

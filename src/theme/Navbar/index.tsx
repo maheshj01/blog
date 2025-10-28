@@ -19,7 +19,7 @@ export default function Navbar(): React.ReactNode {
     const theme = colorMode === 'dark' ? 'dark' : 'light';
 
     return (
-        <header className="sticky top-0 z-50 bg-white backdrop-blur-md border-b border-black/5 dark:border-white/10">
+        <header className="navbar sticky top-0 z-50 bg-white backdrop-blur-md border-b border-black/5 dark:border-white/10">
             <div className="h-16 flex items-center justify-between px-4">
                 <div className="flex items-center gap-3">
                     <Link to="/" className="text-base font-semibold text-black">

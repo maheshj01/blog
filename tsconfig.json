@@ -6,7 +6,10 @@
     "declaration": true,
     "emitDeclarationOnly": false,
     "noEmit": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": [
+      "@docusaurus/module-type-aliases"
+    ]
   },
   "include": [
     "src/**/*",

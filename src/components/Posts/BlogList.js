@@ -14,15 +14,39 @@ export const BlogList = (props) => {
         return 'All'
     })
     const fetchPosts = async (tag) => {
-        const feeds = await fetch('https://blog.maheshjamdade.com/blog/feed.json');
-        // var localPosts = siteConfig.customFields.allPosts;
-        feeds.json().then(data => {
-            if (tag === 'All') {
-                setPosts(data.items);
-            } else {
-                setPosts(data.items.filter(post => post.tags.includes(tag)));
+        try {
+            const res = await fetch('/blog/feed.json');
+            if (res.ok) {
+                const data = await res.json();
+                const items = Array.isArray(data.items) ? data.items : [];
+                if (items.length > 0) {
+                    if (tag === 'All') {
+                        setPosts(items);
+                    } else {
+                        console.log("total posts", items.length)
+                        setPosts(items.filter(post => Array.isArray(post.tags) && post.tags.includes(tag)));
+                    }
+                    return;
+                }
             }
-        });
+        } catch (e) {
+            // ignore and fallback to local
+        }
+        // Fallback to local site config posts in dev when feed.json is unavailable
+        const localPosts = siteConfig.customFields.allPosts || [];
+        const mapped = localPosts.map((p) => ({
+            url: `/blog/${p.slug}`,
+            tags: p.tags || [],
+            title: p.title,
+            description: p.description,
+            date_modified: p.created_at,
+        }));
+        if (tag === 'All') {
+            setPosts(mapped);
+        } else {
+            console.log("total posts", mapped.length)
+            setPosts(mapped.filter(post => Array.isArray(post.tags) && post.tags.includes(tag)));
+        }
     };
     useEffect(() => {
         var localPosts = siteConfig.customFields.allPosts;

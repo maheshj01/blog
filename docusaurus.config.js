@@ -273,6 +273,7 @@ const config = {
             "https://github.com/maheshj01/blog/tree/main/",
           feedOptions: {
             type: "json",
+            limit: 1000,
             // createFeedItems: async (blogItems, blogPluginData) => {
             //   return blogItems.map((blogItem) => {
             //     const url = `https://blog.maheshjamdade.com/blog/${blogItem.metadata.permalink}`;

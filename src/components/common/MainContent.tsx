@@ -1,5 +1,5 @@
 import styles from "../../pages/index.module.css";
-import Constants from "../../pages/constants";
+import Constants from "../../constants";
 import Button from "./Button";
 
 interface HomepageHeaderProps {

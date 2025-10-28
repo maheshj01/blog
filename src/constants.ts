@@ -1,5 +1,3 @@
-//
-
 class Constants {
     static readonly BASE_URL = "https://blog.maheshjamdade.com";
     static readonly PORTFOLIO_URL = "https://maheshjamdade.com";

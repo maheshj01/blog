@@ -4,7 +4,7 @@ import Button from "./Button";
 
 interface HomepageHeaderProps {
     title: string;
-    description: string;
+    description?: string;
 }
 
 export default function MainContent({ title, description }:
@@ -13,7 +13,7 @@ export default function MainContent({ title, description }:
     return (
         <header className={`${styles.heroBanner}`}>
             <p className="text-2xl font-medium">{title}</p>
-            <p className="text-2xl font-medium ">{description}</p>
+            {description && <p className="text-2xl font-medium ">{description}</p>}
             <div className={`${styles.buttons}`}>
                 <Button
                     onClick={() => {

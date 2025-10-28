@@ -9,7 +9,7 @@ export default function Home() {
     const { siteConfig } = useDocusaurusContext();
     return <>
         <Layout>
-            <MainContent title={Constants.About} description={Constants.AboutDescription} />
+            <MainContent title={Constants.About} />
             <BlogList />
         </Layout>
     </>

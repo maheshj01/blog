@@ -19,28 +19,29 @@ export default function Navbar(): React.ReactNode {
     const theme = colorMode === 'dark' ? 'dark' : 'light';
 
     return (
-        <header className="navbar sticky top-0 z-50 bg-white backdrop-blur-md border-b border-black/5 dark:border-white/10">
-            <div className="h-16 flex items-center justify-between px-4">
-                <div className="flex items-center gap-3">
+        <header className="navbar min-w-full sticky top-0 z-50 backdrop-blur-md border-b border-black/5 dark:border-white/10 w-full">
+            <div className="h-16 w-full flex items-center justify-between px-4">
+                <div className="flex items-center">
                     <Link to="/" className="text-base font-semibold text-black">
                         {title}
                     </Link>
                 </div>
+                <div className="flex items-center">
+                    <IconButton
+                        tooltipPlacement='bottom-end'
+                        ariaLabel={
+                            theme === 'dark' ? 'Light Mode' : 'Dark Mode'
 
-                <IconButton
-                    tooltipPlacement='bottom-end'
-                    ariaLabel={
-                        theme === 'dark' ? 'Light Mode' : 'Dark Mode'
-
-                    } onClick={() => {
-                        toggleColorMode();
-                    }}>
-                    {theme === 'dark' ? (
-                        <Icon icon="material-symbols:wb-sunny-rounded" className="text-black" width="24" height="24" />
-                    ) : (
-                        <Icon icon="ic:baseline-dark-mode" className="text-black" width="24" height="24" />
-                    )}
-                </IconButton>
+                        } onClick={() => {
+                            toggleColorMode();
+                        }}>
+                        {theme === 'dark' ? (
+                            <Icon icon="material-symbols:wb-sunny-rounded" className="text-black" width="24" height="24" />
+                        ) : (
+                            <Icon icon="ic:baseline-dark-mode" className="text-black" width="24" height="24" />
+                        )}
+                    </IconButton>
+                </div>
             </div>
         </header>
     );

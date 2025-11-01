@@ -384,6 +384,7 @@ const config = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
+      additionalLanguages: ["dart", "bash", "yaml", "json", "javascript"],
     },
   },
 };

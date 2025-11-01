@@ -42,4 +42,15 @@ import ferry5 from "./assets/ferry5.png";
 import ferry6 from "./assets/ferry6.png";
 import ferry7 from "./assets/ferry7.png";
 
-export const images = { road, car_in, car_out, food, costumes, group_back, group1, group2, park1, park2, park3, park4, park5, park6, park7, park8, park9, pool1, pool2, pool3, pool4, pool5, pool6, pool7, pool8, pool9, pool10, pool11, selfie, selfie2, amusement1, amusement2, amusement3, amusement4, amusement5, amusement6, ferry1, ferry2, ferry3, ferry4, ferry5, ferry6, ferry7 };
+/// Shorebird Assets
+import code_push_github from "./assets/shorebird/code_push_github.png";
+import shorebird_cover from "./assets/shorebird/shorebird_cover.png";
+import shorebird_releases from "./assets/shorebird/shorebird_releases.png";
+import shorebird_patches from "./assets/shorebird/shorebird_patches.png";
+import patch_warning from "./assets/shorebird/patch_warning.png";
+import shorebird_patch from "./assets/shorebird/shorebird_patch.png";
+import shorebird_demo from "./assets/shorebird/shorebird_demo.gif";
+import rollback_demo from "./assets/shorebird/rollback_demo.gif";
+export const images = { road, car_in, car_out, food, costumes, group_back, group1, group2, park1, park2, park3, park4, park5, park6, park7, park8, park9, pool1, pool2, pool3, pool4, pool5, pool6, pool7, pool8, pool9, pool10, pool11, selfie, selfie2, amusement1, amusement2, amusement3, amusement4, amusement5, amusement6, ferry1, ferry2, ferry3, ferry4, ferry5, ferry6, ferry7, code_push_github, shorebird_cover, shorebird_releases, shorebird_patches, patch_warning, shorebird_patch, shorebird_demo, rollback_demo };
+
+export const videos = {};

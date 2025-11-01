@@ -15,10 +15,18 @@ const config = {
   customFields: {
     allPosts: [
       {
+        slug: "deliver-realtime-updates-to-your-flutter-app",
+        title: "Shorebird: Deliver Realtime Updates to Your Flutter App",
+        authors: "Mahesh",
+        featured: true,
+        created_at: "2025-07-05",
+        tags: ["flutter", "software", "medium", "CICD"]
+      },
+      {
         slug: "react-keyboard-shortcuts",
         title: "Add Keyboard Shortcuts to your React App like a Pro",
         authors: "Mahesh",
-        featured: true,
+        featured: false,
         created_at: "2024-10-07T00:00:00Z",
         tags: ["programming", "blog", "development", "react"]
       },

@@ -1,5 +1,4 @@
 import './FeaturedCard.css';
-import React from 'react';
 import styles from '../../pages/index.module.css';
 
 interface FeaturedCardProps {

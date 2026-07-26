@@ -3,6 +3,7 @@ import React from 'react';
 import FeaturedCard from './FeaturedCard';
 import './FeaturedList.css';
 import Headline from './Headline';
+import Reveal from '../common/Reveal';
 
 interface Post {
     slug: string;
@@ -24,7 +25,7 @@ export default function FeaturedList(_props: { allPosts?: unknown }) {
         <div className="featuredContainer">
             <Headline title="Featured" size="large" />
             {featured.map((post, index) => (
-                <div key={index}>
+                <Reveal key={post.slug} delay={index * 90}>
                     <FeaturedCard
                         index={index}
                         tags={post.tags}
@@ -33,7 +34,7 @@ export default function FeaturedList(_props: { allPosts?: unknown }) {
                         path={`/blog/${post.slug}`}
                         date={post.created_at}
                     />
-                </div>
+                </Reveal>
             ))}
         </div>
     );

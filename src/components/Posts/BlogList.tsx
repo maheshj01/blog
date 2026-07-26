@@ -1,9 +1,10 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import React, { useEffect, useState } from 'react';
 import FeaturedList from './FeaturedList';
 import Headline from './Headline';
 import PostCard from './PostCard';
+import Reveal from '../common/Reveal';
 import styles from './posts.module.css';
+import { useEffect, useState } from 'react';
 
 interface FeedItem {
     url: string;
@@ -101,19 +102,20 @@ export const BlogList = (_props: Record<string, unknown>) => {
                         oldDate = new Date(allPosts[index - 1].date_modified);
                     }
                     const yearEqual = oldDate.getFullYear() === date.getFullYear();
+                    const delay = (index % 6) * 70;
                     if (yearEqual && index !== 0) {
                         return (
-                            <div key={index}>
+                            <Reveal key={`${selectedTag}-${index}`} delay={delay}>
                                 <PostCard index={index} tags={post.tags} title={`${post.title}`} description={post.description} path={post.url} date={post.date_modified} />
-                            </div>
+                            </Reveal>
                         );
                     }
                     return (
-                        <div key={index}>
+                        <Reveal key={`${selectedTag}-${index}`} delay={delay}>
                             <div style={{ height: '30px' }}></div>
                             <h2>{date.getFullYear()}</h2>
                             <PostCard index={index} className={`card ${index}`} tags={post.tags} title={`${post.title}`} description={post.description} path={post.url} date={post.date_modified} />
-                        </div>
+                        </Reveal>
                     );
                 })}
             </div>

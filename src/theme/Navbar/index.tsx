@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useColorMode, useThemeConfig } from '@docusaurus/theme-common';
-import IconButton from '@site/src/components/common/IconButton';
+import IconButton from '../../components/common/IconButton';
 import { Icon } from '@iconify/react';
+import { useState } from 'react';
 
 export default function Navbar(): React.ReactNode {
     const { siteConfig } = useDocusaurusContext();

@@ -52,7 +52,7 @@ const config = {
         authors: "Mahesh",
         featured: true,
         created_at: "2023-10-13",
-        tags: ["programming", "hiring"]
+        tags: ["programming"]
       },
       {
         slug: "the-genetic-algorithm",
@@ -84,7 +84,7 @@ const config = {
         authors: "Mahesh",
         featured: false,
         created_at: "2023-01-08",
-        tags: ["flutter", "software", "hack"]
+        tags: ["flutter", "software"]
       },
       {
         slug: "everything-about-the-bottomnavigationbar",
@@ -172,7 +172,7 @@ const config = {
         authors: "Mahesh",
         created_at: "2018-02-24",
         featured: false,
-        tags: ["technology", "software", "agile"]
+        tags: ["technology", "software"]
       },
       {
         slug: "relaxing-short-trip",
@@ -188,7 +188,7 @@ const config = {
         featured: false,
         authors: "Mahesh",
         created_at: "2018-02-24",
-        tags: ["life", "thoughts"]
+        tags: ["life"]
       },
       {
         slug: "truth-about-bitcoin-holders",
@@ -196,7 +196,7 @@ const config = {
         authors: "Mahesh",
         created_at: "2020-02-13",
         featured: false,
-        tags: ["bitcoin", "cryptocurrency", "blockchain", "thoughts"]
+        tags: ["bitcoin", "cryptocurrency", "blockchain"]
       },
       {
         slug: "bitcoin-bubble-burst",
@@ -204,7 +204,7 @@ const config = {
         authors: "Mahesh",
         created_at: "2020-05-01",
         featured: false,
-        tags: ["bitcoin", "cryptocurrency", "blockchain", "thoughts"]
+        tags: ["bitcoin", "cryptocurrency", "blockchain"]
       },
       {
         slug: "india-bans-crypto",
@@ -212,7 +212,7 @@ const config = {
         authors: "Mahesh",
         created_at: "2018-02-02",
         featured: false,
-        tags: ["bitcoin", "cryptocurrency", "blockchain", "thoughts"]
+        tags: ["bitcoin", "cryptocurrency", "blockchain"]
       },
       {
         slug: "positive-vibe-reminder",

@@ -1,10 +1,9 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import FeaturedList from './FeaturedList';
-import Headline from './Headline';
 import PostCard from './PostCard';
 import Reveal from '../common/Reveal';
-import styles from './posts.module.css';
-import { useEffect, useState } from 'react';
+import './blog-list.css';
+import { useEffect, useState, type ReactNode } from 'react';
 
 interface FeedItem {
     url: string;
@@ -76,78 +75,88 @@ export const BlogList = (_props: Record<string, unknown>) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return (
-        <div className={`${styles.blogList} `}>
-            <FeaturedList allPosts={allPosts} />
-            <div style={{ height: '30px' }}></div>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div className={styles.filterContainer}>
-                    <Headline title="All Posts" size="large" />
-                    <div style={{ width: '20px' }}></div>
-                    <Tags
-                        selectedTag={selectedTag}
-                        tags={tags}
-                        onTagClick={(x) => {
-                            setSelected(x);
-                            fetchPosts(x);
-                        }}
-                    />
+    // Sort newest-first so each year forms one contiguous block. The source
+    // data isn't guaranteed to be chronological, and rendering it unsorted
+    // produces duplicate/out-of-order year markers.
+    const sortedPosts = [...allPosts].sort(
+        (a, b) => new Date(b.date_modified).getTime() - new Date(a.date_modified).getTime()
+    );
+
+    // Build the changelog timeline: one year marker precedes the first post of each year.
+    const rows: ReactNode[] = [];
+    let lastYear: number | null = null;
+    sortedPosts.forEach((post, index) => {
+        const year = new Date(post.date_modified).getFullYear();
+        if (year !== lastYear) {
+            lastYear = year;
+            rows.push(
+                <div className="year-marker" key={`year-${year}`}>
+                    <span className="year-marker__node" aria-hidden="true" />
+                    {year}
                 </div>
-            </div>
-            <div className={`${styles.blogList} `}>
-                {allPosts.map((post, index) => {
-                    const date = new Date(post.date_modified);
-                    let oldDate = date;
-                    if (index !== 0) {
-                        oldDate = new Date(allPosts[index - 1].date_modified);
-                    }
-                    const yearEqual = oldDate.getFullYear() === date.getFullYear();
-                    const delay = (index % 6) * 70;
-                    if (yearEqual && index !== 0) {
-                        return (
-                            <Reveal key={`${selectedTag}-${index}`} delay={delay}>
-                                <PostCard index={index} tags={post.tags} title={`${post.title}`} description={post.description} path={post.url} date={post.date_modified} />
-                            </Reveal>
-                        );
-                    }
-                    return (
-                        <Reveal key={`${selectedTag}-${index}`} delay={delay}>
-                            <div style={{ height: '30px' }}></div>
-                            <h2>{date.getFullYear()}</h2>
-                            <PostCard index={index} className={`card ${index}`} tags={post.tags} title={`${post.title}`} description={post.description} path={post.url} date={post.date_modified} />
-                        </Reveal>
-                    );
-                })}
-            </div>
-        </div>
+            );
+        }
+        const delay = (index % 6) * 55;
+        rows.push(
+            <Reveal key={`post-${post.url}`} delay={delay}>
+                <PostCard
+                    index={index}
+                    tags={post.tags}
+                    title={`${post.title}`}
+                    description={post.description}
+                    path={post.url}
+                    date={post.date_modified}
+                />
+            </Reveal>
+        );
+    });
+
+    return (
+        <>
+            <FeaturedList allPosts={allPosts} />
+            <section className="home-section all-posts">
+                <div className="section-head">
+                    <h2 className="section-title">All posts</h2>
+                    <span className="section-rule" aria-hidden="true" />
+                    <span className="section-count">{allPosts.length}</span>
+                </div>
+                <Tags
+                    selectedTag={selectedTag}
+                    tags={tags}
+                    onTagClick={(x) => {
+                        setSelected(x);
+                        fetchPosts(x);
+                    }}
+                />
+                {allPosts.length === 0 ? (
+                    <p className="posts-empty">No posts here yet — try another tag.</p>
+                ) : (
+                    <div className="post-timeline" key={selectedTag}>{rows}</div>
+                )}
+            </section>
+        </>
     );
 };
 
 export default BlogList;
 
 export function Tags(props: TagsProps) {
-    const handleTagClick = (tag: string) => {
-        props.onTagClick(tag);
-    };
     return (
-        <div className={styles.tagsContainer}>
-            {props.tags.map((tag) => (
-                <div
-                    key={tag}
-                    className={`${styles.tag} `}
-                    style={{
-                        border: props.selectedTag === tag ? '2px solid var(--ifm-color-primary)' : '1px solid var(--ifm-color-primary)',
-                        background: props.selectedTag === tag ? 'var(--ifm-color-primary)' : undefined,
-                    }}
-                >
-                    <a
-                        style={{ color: props.selectedTag === tag ? 'white' : 'var(--ifm-color-primary)' }}
-                        onClick={() => handleTagClick(tag)}
+        <div className="tag-filter" role="group" aria-label="Filter posts by tag">
+            {props.tags.map((tag) => {
+                const active = props.selectedTag === tag;
+                return (
+                    <button
+                        key={tag}
+                        type="button"
+                        className={`tag-chip${active ? ' is-active' : ''}`}
+                        aria-pressed={active}
+                        onClick={() => props.onTagClick(tag)}
                     >
                         {tag}
-                    </a>
-                </div>
-            ))}
+                    </button>
+                );
+            })}
         </div>
     );
 }

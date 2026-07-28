@@ -12,6 +12,9 @@ class Constants {
 
     static readonly Title = "Mahesh Jamdade";
     static readonly About = "Hello there! I'm Mahesh. Welcome to my personal blog. Here, I share my insights and reflections on life, career and code. Everything I have ever written on the web at one place.\n\nFeel free to explore and enjoy!";
+    static readonly HeroKicker = "Personal blog";
+    static readonly HeroHeadline = "Notes on code, craft, and a little bit of life.";
+    static readonly HeroIntro = "Hi, I'm Mahesh, A software engineer. This is everything I've ever written on the web, gathered in one place: Flutter deep-dives, algorithms, career notes, and the occasional detour. Feel free to explore and enjoy!";
     static readonly AboutDescription = "Feel free to explore and enjoy!";
     static readonly AboutMe = "About Me";
     static readonly Blog = "Blog";

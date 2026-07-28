@@ -1640,7 +1640,7 @@ __webpack_require__.r(__webpack_exports__);
           "title": "Social",
           "items": [
             {
-              "label": "Website",
+              "label": "Portfolio",
               "href": "https://maheshjamdade.com/"
             },
             {

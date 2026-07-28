@@ -2,7 +2,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import React from 'react';
 import FeaturedCard from './FeaturedCard';
 import './FeaturedList.css';
-import Headline from './Headline';
 import Reveal from '../common/Reveal';
 
 interface Post {
@@ -22,20 +21,26 @@ export default function FeaturedList(_props: { allPosts?: unknown }) {
         return <></>;
     }
     return (
-        <div className="featuredContainer">
-            <Headline title="Featured" size="large" />
-            {featured.map((post, index) => (
-                <Reveal key={post.slug} delay={index * 90}>
-                    <FeaturedCard
-                        index={index}
-                        tags={post.tags}
-                        title={`${post.title}`}
-                        description={post.description}
-                        path={`/blog/${post.slug}`}
-                        date={post.created_at}
-                    />
-                </Reveal>
-            ))}
-        </div>
+        <section className="home-section">
+            <div className="section-head">
+                <h2 className="section-title">Featured</h2>
+                <span className="section-rule" aria-hidden="true" />
+                <span className="section-count">{featured.length}</span>
+            </div>
+            <div className="feat-grid">
+                {featured.map((post, index) => (
+                    <Reveal key={post.slug} delay={index * 70}>
+                        <FeaturedCard
+                            index={index}
+                            tags={post.tags}
+                            title={`${post.title}`}
+                            description={post.description}
+                            path={`/blog/${post.slug}`}
+                            date={post.created_at}
+                        />
+                    </Reveal>
+                ))}
+            </div>
+        </section>
     );
 }

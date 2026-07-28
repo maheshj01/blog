@@ -338,7 +338,7 @@ const config = {
           title: "Social",
           items: [
             {
-              label: "Website",
+              label: "Portfolio",
               href: "https://maheshjamdade.com/",
             },
             {

@@ -1,68 +1,181 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Global styles for Mahesh's Blog.
+ * Design system: "A decade of writing, as a changelog."
+ * - Type:  Space Grotesk (display) / Inter (body) / JetBrains Mono (metadata)
+ * - Color: warm paper + slate ink, single teal accent, hairline rules
  */
 
-/* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,600;0,700;1,900&display=swap');
 
+/* ------------------------------------------------------------------ *
+ * Design tokens
+ * ------------------------------------------------------------------ */
 :root {
-  --ifm-color-primary: rgb(33, 36, 36);
-  --ifm-color-primary-dark: #2e075d;
-  --ifm-color-primary-darker: #2b0758;
-  --ifm-color-primary-darkest: #240648;
-  --ifm-color-primary-light: #380971;
-  --ifm-color-primary-lighter: #3b0976;
-  --ifm-color-primary-lightest: #6d96ff;
-  --ifm-color-card-hover: rgb(204, 230, 230);
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(113, 86, 86, 0.1);
-  --ifm-background-color: #f6f8fb;
-  --ifm-background-surface-color: #ffffff;
-  --ifm-card-background-color: #ffffff;
-  --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
+  /* Surfaces & ink */
+  --page-bg: #faf9f6;
+  --surface: #ffffff;
+  --surface-2: #f3f3ef;
+  --ink: #16181d;
+  --ink-soft: #3d434d;
+  --muted: #6b7280;
+  --rule: rgba(20, 24, 30, 0.1);
+  --rule-strong: rgba(20, 24, 30, 0.16);
+
+  /* Accent — teal */
+  --brand: #0f766e;
+  --brand-soft: #0d9488;
+  --brand-tint: rgba(13, 148, 136, 0.09);
+  --brand-contrast: #ffffff;
+
+  /* Docusaurus / Infima mappings */
+  --ifm-font-family-base: var(--font-body);
+  --ifm-heading-font-family: var(--font-display);
+  --ifm-font-family-monospace: var(--font-mono);
+  --ifm-background-color: var(--page-bg);
+  --ifm-background-surface-color: var(--surface);
+  --ifm-card-background-color: var(--surface);
+
+  --ifm-color-primary: #0f766e;
+  --ifm-color-primary-dark: #0e6b64;
+  --ifm-color-primary-darker: #0d635d;
+  --ifm-color-primary-darkest: #0a524d;
+  --ifm-color-primary-light: #108177;
+  --ifm-color-primary-lighter: #11897e;
+  --ifm-color-primary-lightest: #14a093;
+
+  --ifm-navbar-background-color: rgba(250, 249, 246, 0.72);
+  --ifm-navbar-shadow: none;
+  --ifm-code-font-size: 92%;
+  --ifm-font-size-base: 17px;
+  --ifm-line-height-base: 1.7;
+  --docusaurus-highlighted-code-line-bg: rgba(15, 118, 110, 0.08);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --ifm-color-card-hover: #7efee3;
+  --page-bg: #0d1014;
+  --surface: #14181f;
+  --surface-2: #1b212a;
+  --ink: #e7eaef;
+  --ink-soft: #c2c8d0;
+  --muted: #8a94a2;
+  --rule: rgba(255, 255, 255, 0.1);
+  --rule-strong: rgba(255, 255, 255, 0.16);
 
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --brand: #2dd4bf;
+  --brand-soft: #5eead4;
+  --brand-tint: rgba(45, 212, 191, 0.1);
+  --brand-contrast: #06201d;
+
+  --ifm-color-primary: #2dd4bf;
+  --ifm-color-primary-dark: #24c3af;
+  --ifm-color-primary-darker: #20b6a3;
+  --ifm-color-primary-darkest: #1a9587;
+  --ifm-color-primary-light: #46dac8;
+  --ifm-color-primary-lighter: #55ddcd;
+  --ifm-color-primary-lightest: #7ae6da;
+
+  --ifm-navbar-background-color: rgba(13, 16, 20, 0.72);
+  --docusaurus-highlighted-code-line-bg: rgba(45, 212, 191, 0.12);
 }
 
-/* Subtle modern surfaces and elevation */
-.navbar {
-  backdrop-filter: saturate(180%) blur(10px);
-  -webkit-backdrop-filter: saturate(180%) blur(10px);
-  box-shadow: var(--ifm-navbar-shadow);
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
+}
+
+/**
+ * Single page background across the whole canvas.
+ * Infima paints `html` with --ifm-background-color and defines it on
+ * `html[data-theme='...']`, which out-specifies our :root override — so we
+ * re-map it at the same specificity. Without this, the short <body> shows
+ * one color (hero) and the taller <html> shows Infima's default underneath.
+ */
+html[data-theme='light'],
+html[data-theme='dark'] {
+  --ifm-background-color: var(--page-bg);
+  background-color: var(--page-bg);
 }
 
 body {
-  background-color: var(--ifm-background-color);
+  font-family: var(--font-body);
+  background-color: var(--page-bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+/* Keyboard focus — visible in both themes */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Navbar
+ * ------------------------------------------------------------------ */
+.navbar {
+  background-color: var(--ifm-navbar-background-color);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--rule);
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * Blog article reading surface (post pages)
+ * ------------------------------------------------------------------ */
+.markdown {
+  --ifm-h1-font-size: 2.4rem;
+  --ifm-h2-font-size: 1.6rem;
+  --ifm-h3-font-size: 1.25rem;
+}
+
+.markdown > p,
+.markdown li {
+  color: var(--ink-soft);
+}
+
+article {
+  font-size: 1.02rem;
+}
+
+/* Card default (used by Docusaurus internals) */
 .card {
-  background: var(--ifm-card-background-color);
-  border-radius: 12px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  box-shadow: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  background: var(--ifm-color-card-hover);
+/* ------------------------------------------------------------------ *
+ * Reduced motion
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }

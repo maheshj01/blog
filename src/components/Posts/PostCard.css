@@ -1,37 +1,92 @@
-body {
-  font-family: "Poppins", sans-serif;
+/* A single entry in the changelog timeline */
+.post-row {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 1.1rem;
+    padding: 0.85rem 1rem 0.85rem 1.1rem;
+    margin-left: -1.1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background-color 0.18s ease, transform 0.18s ease;
 }
 
-.title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.1;
+.post-row:hover {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--surface-2);
+    transform: translateX(2px);
 }
 
-.postcard {
-  cursor: pointer;
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: left;
-  vertical-align: middle;
-  padding: 20px;
-  border-radius: 10px;
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
+/* Node dot on the spine */
+.post-row__node {
+    position: absolute;
+    left: -22px;
+    top: 1.25rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--page-bg);
+    border: 2px solid var(--rule-strong);
+    transition: border-color 0.18s ease, background-color 0.18s ease;
 }
 
-.postcard:hover {
-  background-color: var(--ifm-color-primary);
-  color: white;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+.post-row:hover .post-row__node {
+    border-color: var(--brand);
+    background: var(--brand);
 }
 
-.postdate {
-  min-width: 80px;
-  font-size: 0.9rem;
-  font-weight: 500;
+.post-row__date {
+    flex-shrink: 0;
+    width: 3.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-top: 0.15rem;
+}
+
+.post-row__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+
+.post-row__title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    transition: color 0.18s ease;
+}
+
+.post-row:hover .post-row__title {
+    color: var(--brand);
+}
+
+.post-row__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+}
+
+.post-row__tag::before {
+    content: '#';
+    opacity: 0.55;
+}
+
+@media screen and (max-width: 640px) {
+    .post-row {
+        gap: 0.85rem;
+    }
+    .post-row__date {
+        width: 3rem;
+        font-size: 0.74rem;
+    }
 }
